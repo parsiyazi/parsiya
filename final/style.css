@@ -1,0 +1,13 @@
+.main{
+    display: flex;
+    flex-wrap: nowrap;
+    height: 1000px;
+}
+
+.posts{
+    background-color: rgb(221, 221, 221);
+}
+
+a{
+    text-decoration: none;
+}
