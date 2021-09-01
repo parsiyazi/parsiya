@@ -9,24 +9,24 @@
     <title>Tweeter</title>
 </head>
 <body>
-    <div>
+    <div id="app">
         <div class="main">
         <div class="d-flex flex-column flex-shrink-0 p-5" style="width: 30%;">
             <img src="profile.jpeg" style="width: 95%">
-            <h4 class="mt-5">Mads Mikelsen</h4>
-            <a href=""><small>@madsmikelsen</small></a>
-            <p>Joined 2011</p>
+            <h4 class="mt-5">{{ user.name }}</h4>
+            <a href=""><small>{{ user.username }}</small></a>
+            <p>{{ user.joined }}</p>
             <div class="row justify-content-between">
                 <div class="col-6">New Tweet</div>
                 <div class="col-2">280</div>
             </div>
-            <textarea v-model="post" rows="8" class="form-control" aria-label="With textarea"></textarea>
+            <textarea rows="8" class="form-control" aria-label="With textarea"></textarea>
             <button class="btn btn-primary mt-2" v-on:click="">Tweet</button>
         </div>
         <div class="d-flex flex-column flex-shrink-0 p-5 posts" style="width: 70%;">
             <div class="card">
-                <div class="card-body">
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <div class="card-body" v-for="post in posts">
+                  <p class="card-text">{{ post.content }}</p>
                   <small class="card-subtitle mb-2 text-muted">Card subtitle</small>
                   <br>
                   <br>
@@ -45,19 +45,23 @@
                 </div>
             </div>
         </div>
+      </div>
     </div>
-     <script> 
-      
-      var app = new Vue({
-        el: '#app',
-        data: {
-          post:""
-        }
-      })</script>   
 
-
-</div>
     <script src="bootstrap-5.0.1-dist/js/bootstrap.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
-</body>
+    <script>  
+        var app = new Vue({
+          el: '#app',
+          data: {
+            user: {name:"Mads Mikelsen",username:"@madsmikelsen",joined:"Joined 2011" },
+            posts:[
+              {content:"this is my first Twwet on Tweeter!",date:"2021-09-01"},
+              {content:"Going for Bicycle, anyone?",date:"2021-09-02"},
+            ]
+            
+          }
+        })
+    </script>   
+  </body>
 </html>
